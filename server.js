@@ -22,12 +22,12 @@ function isAcceptableVel(vel) {
 }
 
 function movePlayer(id, x, y) {
-  const newHeight = players[id].height + y;
-  const newWidth = players[id].width + x;
+  const newX = players[id].x + x;
+  const newY = players[id].y + y;
 
-  if (isInBounds(newHeight) && isInBounds(newWidth)) {
-    players[id].height = newHeight;
-    players[id].width = newWidth;
+  if (isInBounds(newX) && isInBounds(newY)) {
+    players[id].x = newX;
+    players[id].y = newY;
   } else {
     players[id].velX = 0;
     players[id].velY = 0;
@@ -74,8 +74,8 @@ io.on('connection', (socket) => {
   console.log('User connected: ', socket.id);
 
   players[socket.id] = {
-    height: 0,
-    width: 0,
+    x: 0,
+    y: 0,
     velX: 0,
     velY: 0,
     colour: stringToColour(socket.id),
