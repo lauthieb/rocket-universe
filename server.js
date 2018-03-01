@@ -78,7 +78,8 @@ io.on('connection', (socket) => {
     width: 0,
     velX: 0,
     velY: 0,
-    colour: stringToColour(socket.id)
+    colour: stringToColour(socket.id),
+    position: 'up'
   };
 
   socket.on('disconnect', () => {
@@ -88,21 +89,25 @@ io.on('connection', (socket) => {
 
   socket.on('up', () => {
     console.log('up message received from ', socket.id);
+    players[socket.id].position = 'up';
     accelPlayer(socket.id, 0, -1);
   });
 
   socket.on('down', () => {
     console.log('down message received from ', socket.id);
+    players[socket.id].position = 'down';
     accelPlayer(socket.id, 0, 1);
   });
 
   socket.on('left', () => {
     console.log('left message received from ', socket.id);
+    players[socket.id].position = 'left';
     accelPlayer(socket.id, -1, 0);
   });
 
   socket.on('right', () => {
     console.log('right message received from ', socket.id);
+    players[socket.id].position = 'right';
     accelPlayer(socket.id, 1, 0);
   })
 });
