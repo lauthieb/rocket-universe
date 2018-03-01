@@ -22,6 +22,7 @@ function gameLoop() {
 io.on('connection', (socket) => {
   console.log('User connected: ', socket.id);
 
+  // Création d'un nouveau joueur
   engine.players[socket.id] = {
     x: 0,
     y: 0,
@@ -31,32 +32,49 @@ io.on('connection', (socket) => {
     position: 'up'
   };
 
-  socket.on('disconnect', () => {
-    delete engine.players[socket.id];
-    io.emit('gameStateUpdate', engine.players);
-  });
+  /**
+   * TODO 1:
+   * Supprimer le joueur lorsque quelqu'un se déconnecte
+   * Puis, prévenir le client afin qu'il se mette à jour
+   */
 
   socket.on('up', () => {
     console.log('up message received from ', socket.id);
-    engine.players[socket.id].position = 'up';
+
+    /**
+     * TODO 2:
+     * Changer la position du player correspondant
+     */
     engine.accelPlayer(socket.id, 0, -1);
   });
 
   socket.on('down', () => {
     console.log('down message received from ', socket.id);
-    engine.players[socket.id].position = 'down';
+
+    /**
+     * TODO 2:
+     * Changer la position du player correspondant
+     */
     engine.accelPlayer(socket.id, 0, 1);
   });
 
   socket.on('left', () => {
     console.log('left message received from ', socket.id);
-    engine.players[socket.id].position = 'left';
+
+    /**
+     * TODO 2:
+     * Changer la position du player correspondant
+     */
     engine.accelPlayer(socket.id, -1, 0);
   });
 
   socket.on('right', () => {
     console.log('right message received from ', socket.id);
-    engine.players[socket.id].position = 'right';
+
+    /**
+     * TODO 2:
+     * Changer la position du player correspondant
+     */
     engine.accelPlayer(socket.id, 1, 0);
   })
 });
