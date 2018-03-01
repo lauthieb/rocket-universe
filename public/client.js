@@ -29,7 +29,7 @@ $(function () {
       }
 
       ctx.drawImage(rocket, player.x, player.y);
-    })
+    });
   });
 
   $('html').keydown(e => {
