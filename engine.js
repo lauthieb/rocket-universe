@@ -1,14 +1,32 @@
+// La taille du plateau en pixels
 const GAME_SIZE = 550;
+
+// L'objet contenant les joueurs
 const players = {};
 
+/**
+ * Cette fonction vérifie que la position donnée est bien dans le canvas
+ * @param pos
+ * @returns {boolean}
+ */
 function isInBounds(pos) {
   return pos >= 0 && pos <= GAME_SIZE - 30;
 }
 
+/**
+ * Cette fonction limite la vélocité à 5
+ * @param pos
+ * @returns {boolean}
+ */
 function isAcceptableVel(vel) {
   return vel >= -5 && vel <= 5;
 }
 
+/**
+ * Cette fonction permet de faire bouger un joueur
+ * @param pos
+ * @returns {boolean}
+ */
 function movePlayer(id, x, y) {
   const newX = players[id].x + x;
   const newY = players[id].y + y;
@@ -22,6 +40,11 @@ function movePlayer(id, x, y) {
   }
 }
 
+/**
+ * Cette fonction permet de faire accélerer un joueur
+ * @param pos
+ * @returns {boolean}
+ */
 function accelPlayer(id, x, y) {
   const newVelX = players[id].velX + x;
   const newVelY = players[id].velY + y;
@@ -32,6 +55,11 @@ function accelPlayer(id, x, y) {
   }
 }
 
+/**
+ * Cette fonction transforme une chaîne de caractère en une couleur hexadécimale
+ * @param pos
+ * @returns {boolean}
+ */
 function stringToColour(str) {
   let hash = 0;
 
