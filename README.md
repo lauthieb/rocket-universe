@@ -19,13 +19,41 @@ Avant de t'attaquer aux différents TODO, nous allons t'expliquer l'arborescence
 Voilà, tu connais maintenant l'architecture globale de notre jeu, nous t'invitons à lire les commentaires présents dans le code afin de mieux comprendre chaque partie du code déjà généré !
 N'hésite pas si tu as des questions, nous sommes présents pour te répondre également !
 
+### Informations avant le décollage
+
+Attachez vos ceintures car c'est important.
+
+Dans le fichier server.js, vous avez une fonction `gameLoop` :   
+
+```
+function gameLoop() {
+  Object.keys(engine.players).forEach((playerId) => {
+    let player = engine.players[playerId];
+    engine.movePlayer(playerId, player.velX, player.velY)
+  });
+
+  io.emit('gameStateUpdate', engine.players);
+}
+```
+
+Celle-ci, comme son nom l'indique, représente la boucle du jeu. Elle permet de bouger l'ensemble des joueurs en fonction de leur vélocité et de prévenir le client des changements effectués.
+Elle est appelée toutes les 30 millisecondes, dès le lancement du serveur :
+
+```
+http.listen(3000, () => {
+  console.log('listening on *:3000');
+
+  setInterval(gameLoop, 30);
+});
+```
+
 ### TODO 1 : Déconnexion d'un utilisateur (server.js)
 
 Comme tu as pu le voir dans la partie cours, il est possible d'agir côté serveur dès lors qu'une personne se déconnecte.
 
 Indice : utilise la fonction ``delete`` offerte par JavaScript ;)
 
-Enfin, n'oublie pas de prévenir le client afin qu'il puisse agir après cete déconnexion !
+Enfin, n'oublie pas de prévenir le client afin qu'il puisse agir après cette déconnexion !
 
 ### TODO 2 : Changement de direction (server.js)
 
