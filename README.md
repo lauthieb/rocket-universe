@@ -8,7 +8,7 @@ Hello ! Tout d'abord bravo d'être arrivé jusqu'ici !
 
 Pour cette partie, nous allons manipuler que la partie client !
 
-Afin de ne pas perdre trop de temps dans la partie manipulation de canvas HTML5, je vais te guider pour cette étape !
+Afin de ne pas perdre trop de temps dans la partie manipulation de canvas HTML5, nous allons te guider pour cette étape !
 
 ### TODO 1 : On efface l'ensemble canvas dès la mise à jour !
 
