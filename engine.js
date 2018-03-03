@@ -4,6 +4,17 @@ const GAME_SIZE = 550;
 // L'objet contenant les joueurs
 const players = {};
 
+// L'objet qui représente l'étoile
+const star = {height: 20, width: 20};
+
+// La liste des noms de joueurs
+const namePlayers = [
+    "toto",
+    "titi",
+    "tutu",
+    "tata"
+];
+
 /**
  * Cette fonction vérifie que la position donnée est bien dans le canvas
  * @param pos
@@ -77,9 +88,42 @@ function stringToColour(str) {
   return colour;
 }
 
+/**
+ * Cette fonction permet de générer l'étoile
+ */
+function generateStar() {
+    star.x = Math.floor(Math.random() * (GAME_SIZE-star.width));
+    star.y = Math.floor(Math.random() * (GAME_SIZE-star.height));
+    console.log("generate new star ", star);
+}
+
+/**
+ * Cette fonction permet de récupérer un nom pour le joueur
+ * @returns {string}
+ */
+function nameOfPlayer() {
+  return namePlayers[Math.floor(Math.random() * namePlayers.length)];
+}
+
+/**
+ * Cette fonction indique si le joueur est en collision avec l'étoile
+ * @param player
+ * @returns {boolean}
+ */
+function checkCollisionWithStar(player) {
+    return player.x < star.x + star.width &&
+        player.x + player.width > star.x &&
+        player.y < star.y + star.height &&
+        player.height + player.y > star.y;
+}
+
 module.exports = {
   players: players,
   stringToColour: stringToColour,
   movePlayer: movePlayer,
-  accelPlayer: accelPlayer
+  accelPlayer: accelPlayer,
+  nameOfPlayer: nameOfPlayer,
+  star: star,
+  generateStar: generateStar,
+  checkCollisionWithStar: checkCollisionWithStar
 };
