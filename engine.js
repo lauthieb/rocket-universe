@@ -8,12 +8,7 @@ const players = {};
 const star = {height: 20, width: 20};
 
 // La liste des noms de joueurs
-const namePlayers = [
-    "toto",
-    "titi",
-    "tutu",
-    "tata"
-];
+const namePlayers = require('./public/name-players.json');
 
 /**
  * Cette fonction vérifie que la position donnée est bien dans le canvas
