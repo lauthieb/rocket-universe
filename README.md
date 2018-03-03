@@ -54,4 +54,4 @@ Lancez simplement ``npm start`` et rendez-vous sur [http://localhost:3000](http:
 
 Ca y'est, votre fusée bouge ! Si vous ouvrez un deuxième navigateur, vous les verrez bouger simultanément ! 
 
-Tout est bon ? Passez à l'ultime étape avec git checkout step-3 !
+Tout est bon ? Passez à l'ultime étape avec `git checkout step-3 !
