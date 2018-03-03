@@ -53,3 +53,5 @@ Ce code n'est pas compliqué à comprendre, retenez simplement que l'on dessine 
 Lancez simplement ``npm start`` et rendez-vous sur [http://localhost:3000](http://localhost:3000)
 
 Ca y'est, votre fusée bouge ! Si vous ouvrez un deuxième navigateur, vous les verrez bouger simultanément ! 
+
+Tout est bon ? Passez à l'ultimate étape avec git checkout step-3 !
