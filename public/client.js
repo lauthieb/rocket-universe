@@ -11,7 +11,8 @@ $(function () {
     }
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    document.getElementById('playerCount').innerHTML = `Number of players: ${Object.keys(gameState.players).length}`;
+    console.log(socket.id);
+    document.getElementById('playerName').innerHTML = `Welcome ${gameState.players[socket.id].name} !`;
 
     const star = new Image(gameState.star.width, gameState.star.height);
     star.src = `./img/star.png`;

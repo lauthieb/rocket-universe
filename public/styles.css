@@ -24,7 +24,9 @@ h1 {
     border: 1px dashed white;
 }
 
-
+#playerName {
+    font-size: 18px;
+}
 
 #playersScore {
     width: 300px;
