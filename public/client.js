@@ -11,7 +11,6 @@ $(function () {
     }
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    console.log(socket.id);
     document.getElementById('playerName').innerHTML = `Welcome ${gameState.players[socket.id].name} !`;
 
     const star = new Image(gameState.star.width, gameState.star.height);
@@ -23,7 +22,7 @@ $(function () {
       ctx.fillStyle = player.colour;
 
       const rocket = new Image(player.width, player.height);
-      rocket.src = `./img/rocket-${player.position}.png`;
+      rocket.src = `${playerId === socket.id ?'./img/rocket-player':'./img/rocket'}-${player.position}.png`;
 
       switch (player.position) {
         case 'down':
