@@ -13,20 +13,30 @@ app.get('/', function (req, res) {
 function gameLoop() {
   Object.keys(engine.players).forEach((playerId) => {
     let player = engine.players[playerId];
-    engine.movePlayer(playerId, player.velX, player.velY)
+
+    engine.movePlayer(playerId, player.velX, player.velY);
   });
 
-  io.emit('gameStateUpdate', engine.players);
+  let playersSorted = {};
+  Object.keys(engine.players)
+      .sort((player1, player2) => engine.players[player1].score > engine.players[player2].score)
+      .forEach(playerId => playersSorted[playerId] = engine.players[playerId]);
+
+  io.emit('gameStateUpdate', {players: playersSorted, star: engine.star});
 }
 
 io.on('connection', (socket) => {
   console.log('User connected: ', socket.id);
 
   engine.players[socket.id] = {
+    name: engine.nameOfPlayer(),
+    score: 0,
     x: 0,
     y: 0,
     velX: 0,
     velY: 0,
+    height: 20,
+    width: 20,
     colour: engine.stringToColour(socket.id),
     position: 'up'
   };
@@ -61,8 +71,10 @@ io.on('connection', (socket) => {
   })
 });
 
-http.listen(3000, () => {
-  console.log('listening on *:3000');
+http.listen(process.env.PORT || 3000, () => {
+  console.log('Server listening');
+
+  engine.generateStar();
 
   setInterval(gameLoop, 30);
 });

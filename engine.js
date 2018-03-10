@@ -4,6 +4,12 @@ const GAME_SIZE = 550;
 // L'objet contenant les joueurs
 const players = {};
 
+// L'objet qui représente l'étoile
+const star = {x:0, y:0, height: 20, width: 20};
+
+// La liste des noms de joueurs
+const namePlayers = require('./public/name-players.json');
+
 /**
  * Cette fonction vérifie que la position donnée est bien dans le canvas
  * @param pos
@@ -77,9 +83,29 @@ function stringToColour(str) {
   return colour;
 }
 
+/**
+ * Cette fonction permet de générer l'étoile
+ */
+function generateStar() {
+    /**
+     * TODO 1 : Générer les positions de l'étoile
+     */
+}
+
+/**
+ * Cette fonction permet de récupérer un nom pour le joueur
+ * @returns {string}
+ */
+function nameOfPlayer() {
+  return namePlayers[Math.floor(Math.random() * namePlayers.length)];
+}
+
 module.exports = {
   players: players,
   stringToColour: stringToColour,
   movePlayer: movePlayer,
-  accelPlayer: accelPlayer
+  accelPlayer: accelPlayer,
+  nameOfPlayer: nameOfPlayer,
+  star: star,
+  generateStar: generateStar
 };
