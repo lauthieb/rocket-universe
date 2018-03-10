@@ -5,7 +5,7 @@ const GAME_SIZE = 550;
 const players = {};
 
 // L'objet qui représente l'étoile
-const star = {x:0, y:0, height: 20, width: 20};
+const star = {height: 20, width: 20};
 
 // La liste des noms de joueurs
 const namePlayers = require('./public/name-players.json');
@@ -87,9 +87,9 @@ function stringToColour(str) {
  * Cette fonction permet de générer l'étoile
  */
 function generateStar() {
-    /**
-     * TODO 1 : Générer les positions de l'étoile
-     */
+    star.x = Math.floor(Math.random() * (GAME_SIZE-star.width));
+    star.y = Math.floor(Math.random() * (GAME_SIZE-star.height));
+    console.log("generate new star ", star);
 }
 
 /**
@@ -100,6 +100,18 @@ function nameOfPlayer() {
   return namePlayers[Math.floor(Math.random() * namePlayers.length)];
 }
 
+/**
+ * Cette fonction indique si le joueur est en collision avec l'étoile
+ * @param player
+ * @returns {boolean}
+ */
+function checkCollisionWithStar(player) {
+    return player.x < star.x + star.width &&
+        player.x + player.width > star.x &&
+        player.y < star.y + star.height &&
+        player.height + player.y > star.y;
+}
+
 module.exports = {
   players: players,
   stringToColour: stringToColour,
@@ -107,5 +119,6 @@ module.exports = {
   accelPlayer: accelPlayer,
   nameOfPlayer: nameOfPlayer,
   star: star,
-  generateStar: generateStar
+  generateStar: generateStar,
+  checkCollisionWithStar: checkCollisionWithStar
 };

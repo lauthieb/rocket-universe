@@ -14,6 +14,10 @@ function gameLoop() {
   Object.keys(engine.players).forEach((playerId) => {
     let player = engine.players[playerId];
 
+    if(engine.checkCollisionWithStar(player)){
+      player.score++;
+      engine.generateStar();
+    }
     engine.movePlayer(playerId, player.velX, player.velY);
   });
 

@@ -13,10 +13,9 @@ $(function () {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     document.getElementById('playerName').innerHTML = `Welcome ${gameState.players[socket.id].name} !`;
 
-    /**
-     * TODO 1 : Dessiner l'étoile dans le canvas
-     * Indication : l'objet star est un attribut du paramètre gameState.
-     */
+    const star = new Image(gameState.star.width, gameState.star.height);
+    star.src = `./img/star.png`;
+    ctx.drawImage(star, gameState.star.x, gameState.star.y);
 
     Object.keys(gameState.players).forEach((playerId) => {
       let player = gameState.players[playerId];
